@@ -1608,8 +1608,10 @@
     var rzp1 = new Razorpay(options);
     
     document.getElementById('rzp-button1').onclick = function(e){
+      if(email != '' && mobile != ''){
         rzp1.open();
         e.preventDefault();
+      }
     }
 </script>
 
