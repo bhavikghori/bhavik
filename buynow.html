@@ -1568,7 +1568,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 
-      $('#rzp-button1').click(function(){
+      $('#rzp-button1').click(function(e){
 
             var email = $('#email').val();
             var mobile = $('#mobile').val();
@@ -1595,6 +1595,7 @@
                         "handler": function (response){
                               alert("Payment successful! Razorpay Payment ID: " + response.razorpay_payment_id);
                               // Optionally send response to your backend here
+                               window.location.href = "https://t.me/your_telegram_username";
                         },
                         "prefill": {
                               "name": "User",
