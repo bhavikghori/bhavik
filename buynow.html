@@ -1595,7 +1595,20 @@
                         "description": "Test Transaction",
                         "image": "https://dpqvjjuokypms.cloudfront.net/defaultProfile+(4).png",
                         "handler": function (response){
-                              alert("Payment successful! Razorpay Payment ID: " + response.razorpay_payment_id);
+
+                            fetch("verify.php", {
+                                method: "POST",
+                                headers: {
+                                "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            }).then(res => res.text())
+                            .then(data => alert(data));
+
                               // Optionally send response to your backend here
                                window.location.href = "https://wa.me/917096001731?text=hi,payment%20is%20done.%20send%20me%20file%20link.";
                         },
